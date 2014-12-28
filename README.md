@@ -10,5 +10,9 @@ with the added bonus of:
 
 - updates
 - bash
+- `pacman.conf` `Color`, `ILoveCandy` enabled by default
+
+![](http://i.imgur.com/r6vxHFB.png)
+
 
 build off this image to get a `base` install of arch linux for ARM
