@@ -47,7 +47,7 @@ arch-chroot $ROOTFS /bin/sh -c "ln -s /usr/share/zoneinfo/UTC /etc/localtime"
 echo 'en_US.UTF-8 UTF-8' > $ROOTFS/etc/locale.gen
 arch-chroot $ROOTFS locale-gen
 arch-chroot $ROOTFS /bin/sh -c 'echo "Server = http://mirror.archlinuxarm.org/\$arch/\$repo" > /etc/pacman.d/mirrorlist'
-cp mkimage-arch-pacman.con $ROOTFS/etc/pacman.conf
+cp mkimage-arch-pacman.conf $ROOTFS/etc/pacman.conf
 
 # udev doesn't work in containers, rebuild /dev
 DEV=$ROOTFS/dev
