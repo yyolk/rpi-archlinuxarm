@@ -36,14 +36,10 @@ expect <<EOF
 	}
 EOF
 
-#mkdir -p $ROOTFS/etc
-#ln -s /etc/resolv.conf $ROOTFS/etc/
-
 arch-chroot $ROOTFS /bin/sh -c "haveged -w 1024; pacman-key --init; pkill haveged; pacman -Rs --noconfirm haveged; pacman-key --populate archlinux; pkill gpg-agent"
 arch-chroot $ROOTFS /bin/sh -c "ln -s /usr/share/zoneinfo/UTC /etc/localtime"
 echo 'en_US.UTF-8 UTF-8' > $ROOTFS/etc/locale.gen
 arch-chroot $ROOTFS locale-gen
-#arch-chroot $ROOTFS /bin/sh -c 'echo "Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist'
 arch-chroot $ROOTFS /bin/sh -c 'echo "Server = http://mirror.archlinuxarm.org/\$arch/\$repo" > /etc/pacman.d/mirrorlist'
 
 # udev doesn't work in containers, rebuild /dev
