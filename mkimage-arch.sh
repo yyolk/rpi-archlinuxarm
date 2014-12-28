@@ -5,6 +5,11 @@
 # requires root
 set -e
 
+hash docker &>/dev/null || {
+	echo "Could not find docker. Run pacman -S docker"
+	exit 1
+}
+
 hash pacstrap &>/dev/null || {
 	echo "Could not find pacstrap. Run pacman -S arch-install-scripts"
 	exit 1
