@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Generate a minimal filesystem for archlinux and load it into the local
-# docker as "archlinux"
+# docker as "archlinuxarm"
+# modified from: https://github.com/docker/docker/blob/d04debddd983b3aa48ad38659d2c3debe794d374/contrib/mkimage-arch.sh
 # requires root
 set -e
 
