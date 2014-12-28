@@ -1,14 +1,8 @@
 #!/usr/bin/env bash
 # Generate a minimal filesystem for archlinux and load it into the local
-# docker as "archlinuxarm"
-# modified from: https://github.com/docker/docker/blob/d04debddd983b3aa48ad38659d2c3debe794d374/contrib/mkimage-arch.sh
+# docker as "archlinux"
 # requires root
 set -e
-
-hash docker &>/dev/null || {
-	echo "Could not find docker. Run pacman -S docker"
-	exit 1
-}
 
 hash pacstrap &>/dev/null || {
 	echo "Could not find pacstrap. Run pacman -S arch-install-scripts"
@@ -42,12 +36,15 @@ expect <<EOF
 	}
 EOF
 
+#mkdir -p $ROOTFS/etc
+#ln -s /etc/resolv.conf $ROOTFS/etc/
+
 arch-chroot $ROOTFS /bin/sh -c "haveged -w 1024; pacman-key --init; pkill haveged; pacman -Rs --noconfirm haveged; pacman-key --populate archlinux; pkill gpg-agent"
 arch-chroot $ROOTFS /bin/sh -c "ln -s /usr/share/zoneinfo/UTC /etc/localtime"
 echo 'en_US.UTF-8 UTF-8' > $ROOTFS/etc/locale.gen
 arch-chroot $ROOTFS locale-gen
+#arch-chroot $ROOTFS /bin/sh -c 'echo "Server = https://mirrors.kernel.org/archlinux/\$repo/os/\$arch" > /etc/pacman.d/mirrorlist'
 arch-chroot $ROOTFS /bin/sh -c 'echo "Server = http://mirror.archlinuxarm.org/\$arch/\$repo" > /etc/pacman.d/mirrorlist'
-cp mkimage-arch-pacman.conf $ROOTFS/etc/pacman.conf
 
 # udev doesn't work in containers, rebuild /dev
 DEV=$ROOTFS/dev
@@ -67,6 +64,6 @@ mknod -m 600 $DEV/initctl p
 mknod -m 666 $DEV/ptmx c 5 2
 ln -sf /proc/self/fd $DEV/fd
 
-tar --numeric-owner --xattrs --acls -C $ROOTFS -c . | docker import - archlinuxarm
-docker run --rm -i -t archlinuxarm echo -e '\n\nSuccess.\n'
+tar --numeric-owner --xattrs --acls -C $ROOTFS -c . | docker import - archlinux
+docker run -i -t archlinux echo Success.
 rm -rf $ROOTFS
