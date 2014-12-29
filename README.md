@@ -10,7 +10,9 @@ with the added bonus of:
 
 - updates
 - bash
-- `pacman.conf` `Color`, `ILoveCandy` enabled by default
+- `pacman.conf`
+  - `Color`
+  - `ILoveCandy` enabled by default
 
 ![](http://i.imgur.com/r6vxHFB.png)
 
