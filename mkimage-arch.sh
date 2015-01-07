@@ -68,5 +68,13 @@ ln -sf /proc/self/fd $DEV/fd
 
 tar --numeric-owner --xattrs --acls -C $ROOTFS -c . | docker import - yyolk/rpi-archlinuxarm
 docker run --rm -i -t yyolk/rpi-archlinuxarm echo -e '\n\nSuccess.\n'
-docker tag yyolk/rpi-archlinuxarm yyolk/rpi-archlinuxarm:$(date "+%Y%m%d")
+
 rm -rf $ROOTFS
+
+TIMESTAMP=$(date "+%Y%m%d")
+docker tag yyolk/rpi-archlinuxarm yyolk/rpi-archlinuxarm:$TIMESTAMP
+docker run --rm -i -t yyolk/rpi-archlinuxarm:$TIMESTAMP echo -e "\n\nSuccessfully tagged!\n"
+
+echo "Pushing to hub..."
+
+docker push yyolk/rpi-archlinuxarm
