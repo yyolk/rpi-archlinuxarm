@@ -32,6 +32,6 @@ build off this image to get a `base` install of arch linux for ARM
 
 ### Grab a certain date
 
-The format is __YYYY____MM____DD__
+The format is __YYYY__ __MM__ __DD__
 
     docker pull yyolk/rpi-archlinuxarm:20140106
