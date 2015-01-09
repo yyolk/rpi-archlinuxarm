@@ -1,6 +1,11 @@
 rpi-archlinuxarm
 ================
 
+## :sparkles::sparkles::star:Builds Daily:star::sparkles::sparkles:
+
+Builds daily on a Raspberry Pi B+ daily package updates with `pacstrap`
+
+
 base docker image of archlinux arm
 
 
@@ -20,11 +25,6 @@ with the added bonus of:
 
 build off this image to get a `base` install of arch linux for ARM
 
-
-Builds Daily
-------------
-
-Builds daily on a Raspberry Pi B+ daily package updates with `pacstrap`
 
 ### Grab the latest
 
