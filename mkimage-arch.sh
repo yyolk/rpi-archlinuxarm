@@ -20,7 +20,7 @@ hash expect &>/dev/null || {
 	exit 1
 }
 
-ROOTFS=$(mktemp -d ${TMPDIR:-/var/tmp}/rootfs-archlinux-XXXXXXXXXX)
+ROOTFS=${ROOTFS:-$(mktemp -d ${TMPDIR:-/var/tmp}/rootfs-archlinux-XXXXXXXXXX)}
 chmod 755 $ROOTFS
 
 # packages to ignore for space savings
