@@ -19,8 +19,8 @@ hash expect &>/dev/null || {
 	echo "Could not find expect. Run pacman -S expect"
 	exit 1
 }
-
 ROOTFS=${ROOTFS:-$(mktemp -d ${TMPDIR:-/var/tmp}/rootfs-archlinux-XXXXXXXXXX)}
+echo "Creating ROOTFS with $ROOTFS"
 chmod 755 $ROOTFS
 
 # packages to ignore for space savings
