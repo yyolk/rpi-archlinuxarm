@@ -74,6 +74,7 @@ rm -rf $ROOTFS
 TIMESTAMP=$(date "+%Y%m%d")
 docker tag yyolk/rpi-archlinuxarm yyolk/rpi-archlinuxarm:$TIMESTAMP
 docker run --rm -i -t yyolk/rpi-archlinuxarm:$TIMESTAMP echo -e "\n\nSuccessfully tagged!\n"
+# docker tag yyolk/rpi-archlinuxarm:$TIMESTAMP yyolk/rpi-archlinuxarm:latest
 
 echo "Pushing to hub..."
 
