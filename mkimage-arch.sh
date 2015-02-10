@@ -67,15 +67,15 @@ mknod -m 666 $DEV/ptmx c 5 2
 ln -sf /proc/self/fd $DEV/fd
 
 tar --numeric-owner --xattrs --acls -C $ROOTFS -c . | docker import - yyolk/rpi-archlinuxarm
-docker run --rm -i -t yyolk/rpi-archlinuxarm echo -e '\n\nSuccess.\n'
-
-rm -rf $ROOTFS
-
+docker run --rm -it yyolk/rpi-archlinuxarm echo -e '\n\nSuccess.\n'
 TIMESTAMP=$(date "+%Y%m%d")
 docker tag yyolk/rpi-archlinuxarm yyolk/rpi-archlinuxarm:$TIMESTAMP
-docker run --rm -i -t yyolk/rpi-archlinuxarm:$TIMESTAMP echo -e "\n\nSuccessfully tagged!\n"
+docker run --rm -it yyolk/rpi-archlinuxarm:$TIMESTAMP echo -e "\n\nSuccessfully tagged!\n"
 # docker tag yyolk/rpi-archlinuxarm:$TIMESTAMP yyolk/rpi-archlinuxarm:latest
 
 echo "Pushing to hub..."
+
+rm -rf $ROOTFS
+
 
 docker push yyolk/rpi-archlinuxarm
