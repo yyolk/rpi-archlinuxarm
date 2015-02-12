@@ -1,6 +1,6 @@
 FROM base/arch
 
-RUN pacman -Syy --noconfirm docker arch-install-scripts expect devtmpfs
+RUN pacman -Syy --noconfirm docker arch-install-scripts expect
 
 VOLUME ["/app"]
 
