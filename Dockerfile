@@ -1,5 +1,6 @@
 FROM base/arch
 
+RUN mkdir /run/shm
 RUN pacman -Syy --noconfirm docker arch-install-scripts expect
 
 VOLUME ["/app"]
