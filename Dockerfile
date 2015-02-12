@@ -1,7 +1,9 @@
 FROM base/arch
 
 RUN mkdir /run/shm
-RUN pacman -Syy --noconfirm docker arch-install-scripts expect
+RUN pacman -Syyu --noconfirm docker arch-install-scripts expect base-devel
+
+USER
 
 VOLUME ["/app"]
 
