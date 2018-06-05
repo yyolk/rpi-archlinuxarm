@@ -6,7 +6,7 @@
 set -xe
 
 hash docker &>/dev/null || {
-	echo "Could not find pacstrap. Run pacman -S docker"
+	echo "Could not find docker. Run pacman -S docker"
 	exit 1
 }
 
